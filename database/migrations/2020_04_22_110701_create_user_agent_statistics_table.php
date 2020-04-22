@@ -17,7 +17,7 @@ class CreateUserAgentStatisticsTable extends Migration
             $table->id();
             $table->string('user_agent');
             $table->string('ip');
-            $table->dateTime();
+            $table->dateTime('created_at');
         });
     }
 

@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('post_id');
             $table->string('author', 255);
             $table->string('content', 510);
-            $table->dateTime();
+            $table->dateTime('created_at');
 
             $table->foreign('post_id')->references('id')->on('posts');
         });

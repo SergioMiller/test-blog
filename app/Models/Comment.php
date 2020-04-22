@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    const UPDATED_AT = null;
+
     /**
      * @var string[]
      */
@@ -17,4 +19,9 @@ class Comment extends Model
         'author',
         'content',
     ];
+
+    public function post()
+    {
+        return $this->hasOne(Post::class);
+    }
 }
