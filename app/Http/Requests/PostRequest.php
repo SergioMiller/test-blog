@@ -26,7 +26,7 @@ class PostRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'content' => 'required|string|max:65535',
-            'file' => 'file|size:5000'
+            'upload_file' => 'nullable|file|max:2048'
         ];
     }
 }

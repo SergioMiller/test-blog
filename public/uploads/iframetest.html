@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Testing XSS</title>
+    <script type="text/javascript">
+      function updateIFrame( height ) {
+        alert( 'Updating IFrame height to '+height );
+        var iframe = document.getElementById( 'myiframe' );
+        iframe.setAttribute( 'height', height );
+      }
+    </script>
+    <style type="text/css">
+    body { font-family : Verdana, sans-serif; }
+    h1 { font-family : Georgia, sans-serif; }
+    iframe { border : 2px solid #DDD; }
+    </style>
+  </head>
+  <body>
+    <h1>Main Page</h1>
+    <!--<iframe src="test48-inner.html" width="400" height="100" id="myiframe">-->
+    <iframe src="http://www.johnmckerrell.com/files/iframetest-inner.html" width="400" height="100" id="myiframe">
+    </iframe>
+
+    <p>
+      Above you will see my IFrame, it has some really cool content in it but unfortunately it's too big for the IFrame. Click on each of the three links to see three attempts at resizing the IFrame.
+    </p>
+    <ul>
+      <li>test1 - This will try to resize the frame by simply calling the function on the parent window. Your browser security should stop this (and hopefully alert you).</li>
+      <li>test2 - This is the best way. The IFrame that you can see contains another hidden IFrame. "Inner Page" will load a page from mcknut.googlepages.com passing in a width and height parameter. That page will then call a function on "Main Page" passing in those parameters, the IFrame will then resize.</li>
+      <li>test3 - This method also works but is not really as good. "Inner Page" will replace its content with a page from mcknut.googlepages.com again passing in the width and height as parameters. That page will then resize the IFrame, before passing back to the original IFrame contents. It a passed in 'callback' parameter but could perhaps use window.history.back().</li>
+    </ul>
+    <p>
+      I have tested this method in all browsers I have available to me (Safari 2.0.4, FF 1.5.0.7, IE 6, Opera 9.02, FF 1.0.7, IE 5 and IE 5.5 Standalone) and they all behaved the same (test1 didn't work, test2 and test3 did).
+    </p>
+    <p>
+      I was hoping to be able to demonstrate a way of total two-way communication between the IFrame and it's parent page, using another IFrame that I would make new page requests to, but I realised there's no way to have IFrame 1 access IFrame 2 without going via the parent. If someone thinks of a way to do it though let me know.
+    </p>
+  </body>
+</html>

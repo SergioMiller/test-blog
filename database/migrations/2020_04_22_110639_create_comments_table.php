@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->string('content', 510);
             $table->dateTime('created_at');
 
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

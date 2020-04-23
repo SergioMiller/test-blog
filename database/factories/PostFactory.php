@@ -9,6 +9,6 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'content' => $faker->text,
-        'file' => $faker->imageUrl(),
+        'file' => 'https://picsum.photos/200/300.webp',
     ];
 });

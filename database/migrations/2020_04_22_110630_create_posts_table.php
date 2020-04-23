@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id()->unsigned();
             $table->string('name', 255);
             $table->text('content');
-            $table->string('file', 255);
+            $table->string('file', 255)->nullable();
             $table->timestamps();
         });
 

@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $category = new Category($request->all());
             $category->save();
         } catch (\Exception $e) {
-            session()->flash('danger', "Error saving data!");
+            session()->flash('danger', 'Error deleting data!');
             return back()->withInput();
         }
 
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         try {
             $category->update($request->all());
         } catch (\Exception $e) {
-            session()->flash('danger', "Error saving data!");
+            session()->flash('danger', 'Error deleting data!');
             return back()->withInput();
         }
 
@@ -90,12 +90,11 @@ class CategoryController extends Controller
     {
         try {
             $category->delete();
+            session()->flash('success', "Category {$category->name} deleted successfully!");
         } catch (\Exception $e) {
-            session()->flash('danger', "Error deleting data!");
-            return back()->withInput();
+            session()->flash('danger', 'Error deleting data!');
         }
 
-        session()->flash('success', "Category {$category->name} deleted successfully!");
         return back();
     }
 }
