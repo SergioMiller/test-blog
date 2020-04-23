@@ -14,7 +14,6 @@ class CommentController extends Controller
 {
     public function add(CommentRequest $request, Comment $comment): CommentResource
     {
-        sleep(2);
         $comment->fill($request->all());
 
         if (!$comment->save()){

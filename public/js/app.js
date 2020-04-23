@@ -1975,6 +1975,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38577,38 +38580,45 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "comment-list" }, [
-      _c(
-        "div",
-        { staticClass: "mb-3 p-3 bg-white rounded shadow-sm" },
-        [
-          _c("h6", { staticClass: "border-bottom border-gray pb-2 mb-0" }, [
-            _vm._v("Comments")
-          ]),
-          _vm._v(" "),
-          _vm._l(_vm.comments, function(comment) {
-            return _c("div", { staticClass: "media text-muted pt-3" }, [
-              _c(
-                "p",
-                {
-                  staticClass:
-                    "media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
-                },
-                [
-                  _c("strong", { staticClass: "d-block text-gray-dark" }, [
-                    _vm._v(_vm._s(comment.author))
-                  ]),
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(comment.content) +
-                      "\n                "
-                  )
-                ]
-              )
-            ])
-          })
-        ],
-        2
-      )
+      _c("div", { staticClass: "mb-3 p-3 bg-white rounded shadow-sm" }, [
+        _vm.comments.length
+          ? _c(
+              "div",
+              [
+                _c(
+                  "h6",
+                  { staticClass: "border-bottom border-gray pb-2 mb-0" },
+                  [_vm._v("Comments")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.comments, function(comment) {
+                  return _c("div", { staticClass: "media text-muted pt-3" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass:
+                          "media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
+                      },
+                      [
+                        _c(
+                          "strong",
+                          { staticClass: "d-block text-gray-dark" },
+                          [_vm._v(_vm._s(comment.author))]
+                        ),
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(comment.content) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          : _c("div", [_vm._v("Comments not found")])
+      ])
     ])
   ])
 }
