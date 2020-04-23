@@ -65,8 +65,7 @@ class PostController extends Controller
         try {
             $post = $this->postService->create($request->all());
         } catch (\Exception $e) {
-            dd($e);
-            session()->flash('danger', 'Error deleting data!');
+            session()->flash('danger', 'Error creating data!');
             return back()->withInput();
         }
 
@@ -94,7 +93,8 @@ class PostController extends Controller
         try {
             $post = $this->postService->update($post, $request->all());
         } catch (\Exception $e) {
-            session()->flash('danger', 'Error deleting data!');
+            dd($e);
+            session()->flash('danger', 'Error editing data!');
             return back()->withInput();
         }
 

@@ -31,6 +31,27 @@
                         </div>
                     @endif
                 </div>
+                <div class="categories" style="margin-bottom: 25px;">
+                    @foreach($categories as $category)
+                        <div class="form-group form-check @if($errors->has('category_ids')) is-invalid @endif"
+                             style="margin-bottom: 0;">
+                            <input type="checkbox"
+                                   name="category_ids[]"
+                                   class="form-check-input"
+                                   id="category-{{ $category->id }}"
+                                   value="{{ $category->id }}"
+                                   @if(in_array($category->id, old('category_ids', $post->category_ids))) checked @endif>
+                            <label class="form-check-label" for="category-{{ $category->id }}">
+                                {{ $category->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                    @if($errors->has('category_ids'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('category_ids') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="form-group">
                     <label for="post-upload_file">File</label>
                     <input type="file" name="upload_file" id="post-upload_file"

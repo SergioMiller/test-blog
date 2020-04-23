@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         @if($post->fileIsImage)
-            <img src="{{ $post->file }}" alt="{{ $post->name }}">
+            <img src="{{ $post->fileStoragePath }}" alt="{{ $post->name }}">
         @endif
         <p class="card-text">{{ $post->content }}</p>
             <p class="text-dark">{{ $post->created_at }}</p>

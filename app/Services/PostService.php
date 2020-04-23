@@ -6,6 +6,7 @@ use App\Exceptions\CreatePostException;
 use App\Exceptions\DestroyPostException;
 use App\Exceptions\UpdatePostException;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PostService
@@ -27,6 +28,7 @@ class PostService
         }
 
         if ($post->save()) {
+            $post->categories()->attach($data['category_ids']);
             return $post;
         }
 
@@ -39,13 +41,15 @@ class PostService
      * @return mixed
      * @throws UpdatePostException
      */
-    public function update($post, $data)
+    public function update(Post $post, $data)
     {
         $post->fill($data);
 
         if (!empty($data['upload_file'])) {
             $post->file = $this->uploadFile($data['upload_file']);
         }
+
+        $post->categories()->sync($data['category_ids']);
 
         if ($post->save()) {
             return $post;
@@ -73,16 +77,6 @@ class PostService
      */
     protected function uploadFile($file)
     {
-        $name = $file->getClientOriginalName();
-
-        /**
-         * Move
-         */
-        $file->move(public_path('uploads'), $name);
-
-        /**
-         * return image path
-         */
-        return "/uploads/$name";
+        return $file->store('uploads', 'public');
     }
 }

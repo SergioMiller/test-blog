@@ -4,10 +4,10 @@
 
 @section('content')
     @if($post->fileIsImage)
-        <img src="{{ $post->file }}" alt="{{ $post->name }}">
+        <img src="{{ asset($post->fileStoragePath) }}" alt="{{ $post->name }}">
     @else
         <p>
-            Download file: <a href="{{ $post->file }}" download="">{{ $post->fileName }}</a>
+            Download file: <a href="{{ $post->fileStoragePath }}" download="">{{ $post->fileName }}</a>
         </p>
     @endif
     <p class="text-dark">{{ $post->created_at }}</p>

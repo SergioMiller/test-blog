@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Post
@@ -41,17 +42,28 @@ class Post extends Model
         return in_array($type, ['jpeg', 'jpg', 'png', 'svg', 'webp']);
     }
 
+    public function getFileStoragePathAttribute()
+    {
+        return "/storage/$this->file";
+    }
+
     public function getFileNameAttribute()
     {
         if (empty($this->file)) {
             return false;
         }
 
-        return str_replace('/uploads/', '', $this->file);
+        return str_replace('uploads/', '', $this->file);
     }
 
     public function getCreatedAtAttribute($value)
     {
         return date('d.m.Y H:i:s', strtotime($value));
     }
+
+    public function getCategoryIdsAttribute()
+    {
+        return $this->categories()->pluck('id')->toArray();
+    }
+
 }
