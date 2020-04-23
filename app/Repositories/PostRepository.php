@@ -26,4 +26,9 @@ class PostRepository implements RepositoryInterface
     {
         return $this->model->all();
     }
+
+    public function homeList($perPage = 15)
+    {
+        return $this->model->orderByDesc('id')->paginate($perPage);
+    }
 }
