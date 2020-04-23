@@ -11,5 +11,9 @@
         </p>
     @endif
     <p class="text-dark">{{ $post->created_at }}</p>
-    {{ $post->content }}
+
+    <div class="post-content">
+        {{ $post->content }}
+    </div>
+    <add-comment-component :post_id="{{ $post->id }}" :comments='@json($post->comments)'></add-comment-component>
 @endsection
