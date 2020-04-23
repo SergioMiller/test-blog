@@ -8,6 +8,8 @@
         @include('templates.post', ['post' => $post])
         {{ $posts->links() }}
     @empty
-        <p>Empty</p>
+        <div class="alert alert-secondary">
+            Empty
+        </div>
     @endforelse
 @endsection

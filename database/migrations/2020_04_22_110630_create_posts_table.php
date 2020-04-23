@@ -25,8 +25,8 @@ class CreatePostsTable extends Migration
             $table->foreignId('post_id');
             $table->foreignId('category_id');
 
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

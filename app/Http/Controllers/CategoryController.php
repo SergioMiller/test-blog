@@ -45,6 +45,16 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
+        try {
+            $category = new Category($request->all());
+            $category->save();
+        } catch (\Exception $e) {
+            session()->flash('danger', "Error saving data!");
+            return back()->withInput();
+        }
+
+        session()->flash('success', "Category {$category->name} creates successfully!");
+        return redirect(route('category.edit', $category->id));
     }
 
     public function show(Category $category, PostRepository $postRepository)
@@ -62,12 +72,30 @@ class CategoryController extends Controller
         return view('category.edit', ['category' => $category]);
     }
 
-    public function update()
+    public function update(CategoryRequest $request, Category $category)
     {
+        try {
+            $category->update($request->all());
+        } catch (\Exception $e) {
+            session()->flash('danger', "Error saving data!");
+            return back()->withInput();
+        }
+
+        session()->flash('success', "Category {$category->name} updated successfully!");
+        return redirect(route('category.edit', $category->id));
     }
+
 
     public function destroy(Category $category)
     {
-        return ;
+        try {
+            $category->delete();
+        } catch (\Exception $e) {
+            session()->flash('danger', "Error deleting data!");
+            return back()->withInput();
+        }
+
+        session()->flash('success', "Category {$category->name} deleted successfully!");
+        return back();
     }
 }
