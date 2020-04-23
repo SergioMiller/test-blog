@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use App\Repositories\CategoryRepository;
-use Illuminate\Http\Request;
+use App\Repositories\PostRepository;
 
 /**
  * Class CategoryController
@@ -34,5 +36,38 @@ class CategoryController extends Controller
         return view('category.index', [
             'categories' => $categories
         ]);
+    }
+
+    public function create()
+    {
+        return view('category.create');
+    }
+
+    public function store(CategoryRequest $request)
+    {
+    }
+
+    public function show(Category $category, PostRepository $postRepository)
+    {
+        $posts = $postRepository->findByCategoryId($category->id);
+
+        return view('category.show', [
+            'category' => $category,
+            'posts' => $posts,
+        ]);
+    }
+
+    public function edit(Category $category)
+    {
+        return view('category.edit', ['category' => $category]);
+    }
+
+    public function update()
+    {
+    }
+
+    public function destroy(Category $category)
+    {
+        return ;
     }
 }

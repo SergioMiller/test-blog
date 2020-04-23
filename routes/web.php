@@ -13,5 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
+Route::resource('category', 'CategoryController')->except('index');
+
+Route::resource('post', 'PostController')->except('index');
