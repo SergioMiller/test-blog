@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Add comment</h4>
-                    <p v-for="(error, field) in submitErrors" class="text-danger"><strong>{{ field }}:</strong> {{ error[0] }} </p>
+                    <p v-for="(error, field) in submitErrors" class="text-danger m-0"><strong>{{ field }}:</strong> {{ error[0] }} </p>
                     <form action="#">
                         <div class="form-group">
                             <label for="comment-author">Author</label>

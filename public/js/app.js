@@ -38496,7 +38496,7 @@ var render = function() {
             _c("h4", [_vm._v("Add comment")]),
             _vm._v(" "),
             _vm._l(_vm.submitErrors, function(error, field) {
-              return _c("p", { staticClass: "text-danger" }, [
+              return _c("p", { staticClass: "text-danger m-0" }, [
                 _c("strong", [_vm._v(_vm._s(field) + ":")]),
                 _vm._v(" " + _vm._s(error[0]) + " ")
               ])
