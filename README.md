@@ -8,7 +8,9 @@
     * `composer install`
 4. Поднимаем миграции
     * `php artisan migrate`
-5. Проверяем работу сайта по адресу `http://localhost/8000`
+6. Создаем симлинк
+    * `php artisan storage:link`
+7. Проверяем работу сайта по адресу `http://localhost/8000`
 6. Если нужно сбилдить фронт
     * `npm install`
     * `npm build dev`, `npm build prod`
