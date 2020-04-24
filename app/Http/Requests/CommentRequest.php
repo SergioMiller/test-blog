@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AuthorRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CommentRequest extends FormRequest
@@ -24,7 +25,7 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'author' => 'required|string',
+            'author' => ['required', 'string', new AuthorRule()],
             'content' => 'required|string'
         ];
     }
