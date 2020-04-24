@@ -75,6 +75,8 @@ RUN docker-php-ext-configure soap --enable-soap \
 
 COPY config/php.ini /usr/local/etc/php/php.ini
 
+USER root
+
 EXPOSE 9000
 
 CMD ["php-fpm"]
