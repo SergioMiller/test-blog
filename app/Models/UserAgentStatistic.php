@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserAgentStatistic
@@ -55,5 +56,17 @@ class UserAgentStatistic extends Model
             return $item;
         }
         return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function get()
+    {
+        $data = self::select('browser', DB::raw('COUNT(browser) as count'))
+        ->groupBy('browser')
+        ->get()
+        ->toArray();
+        return $data;
     }
 }

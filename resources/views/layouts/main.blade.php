@@ -28,9 +28,10 @@
         <h1>@yield('page-title')</h1>
 
         <div class="bd-content">
-            @include('templates/flash-message')
+            @include('templates.flash-message')
             @yield('content')
         </div>
+        @include('templates.user-agent')
     </div>
 </div>
 <script src="/js/app.js"></script>
