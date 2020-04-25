@@ -6,7 +6,6 @@ use App\Exceptions\CreatePostException;
 use App\Exceptions\DestroyPostException;
 use App\Exceptions\UpdatePostException;
 use App\Models\Post;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PostService
@@ -61,7 +60,7 @@ class PostService
     /**
      * @param Post $post
      * @return bool|null
-     * @throws \Exception
+     * @throws \Exception|DestroyPostException
      */
     public function delete(Post $post)
     {
