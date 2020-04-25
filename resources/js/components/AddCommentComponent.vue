@@ -25,7 +25,7 @@
                             <label for="comment-content">Content</label>
                             <textarea v-model="content" id="comment-content" class="form-control" required></textarea>
                         </div>
-                        <button class="btn btn-success" v-on:click.prevent="addComment">Save</button>
+                        <button class="btn btn-success" v-on:click.prevent="addComment">Leave a comment</button>
                     </form>
                 </div>
             </div>
